@@ -5,11 +5,11 @@ ShiftDrive is android based application. It’s a development project.
 The scope of ShiftDrive is very broad since every person interacts with the cars directly or indirectly and thus can be a potential user of this application. The major users of this application will be the car owners and workshop workers as they will get the most benefits and can explore more opportunities out of it. 
 
 <h2><b>Project Scope<b></h2>
-  1. Detect the car using images and extract its Make and Model.
-  2. Detect all damaged parts.
-  3. Estimate repair costs.
-  4. Get live biddings from mechanics and vendors.
-  5. Get best Repair options around.
+  1. Detect the car using images and extract its Make and Model.<br>
+  2. Detect all damaged parts.<br>
+  3. Estimate repair costs.<br>
+  4. Get live biddings from mechanics and vendors.<br>
+  5. Get best Repair options around.<br>
   
   <h2><b>Model Details<b></h2>
   Dataset - Train images 7000 - Test Images 220 "Imagenet" Transfer Learning "Softmax" Activation Function "Adam" optimizer "Categorical crossentropy" Loss Function.
