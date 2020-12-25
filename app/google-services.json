@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "72780645550",
+    "project_id": "shiftdrive-8bc5a",
+    "storage_bucket": "shiftdrive-8bc5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72780645550:android:e932142e6514911e76d93f",
+        "android_client_info": {
+          "package_name": "com.usamamehmood.shiftdrive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72780645550-hadl0cd5n0sd2c1n0emc51ps87cr1vjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxIfX670i4lbvRbJsh5l0l4tYqr6-qeMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72780645550-hadl0cd5n0sd2c1n0emc51ps87cr1vjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72780645550:android:3c4dab883f933b5f76d93f",
+        "android_client_info": {
+          "package_name": "com.usamamehmood.worvio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72780645550-hadl0cd5n0sd2c1n0emc51ps87cr1vjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxIfX670i4lbvRbJsh5l0l4tYqr6-qeMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72780645550-hadl0cd5n0sd2c1n0emc51ps87cr1vjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

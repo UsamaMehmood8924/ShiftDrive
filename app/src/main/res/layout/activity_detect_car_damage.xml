@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    style="@style/loginParent"
+    tools:context=".DetectCarDamage">
+
+    <ScrollView
+        style="@style/parent">
+
+        <RelativeLayout
+            style="@style/parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:weightSum="12">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:text="Shift Drive"
+                    android:textSize="40dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:text="Detect Damage on Car"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="120dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+                <include
+                    layout="@layout/layout_detectdamage"/>
+                <include
+                    android:visibility="gone"
+                    layout="@layout/layout_detectdamage_results"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <Button
+                        android:layout_weight="1"
+                        android:id="@+id/getCostBtn"
+                        style="@style/loginButton"
+                        android:text="Estimated Cost"
+                        android:layout_marginRight="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"/>
+                    <Button
+                        android:layout_weight="1"
+                        android:id="@+id/getVenderBid"
+                        style="@style/loginButton"
+                        android:text="Vendor Cost"
+                        android:layout_marginLeft="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

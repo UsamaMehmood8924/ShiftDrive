@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="0dp"
+    android:layout_marginBottom="@dimen/loginViewsMargin"
+    android:layout_marginLeft="0dp"
+    android:id="@+id/cardviewResult"
+    android:layout_marginRight="0dp"
+    android:background="@color/whiteCardColor">
+
+    <LinearLayout
+        style="@style/linearParent"
+        android:id="@+id/resultVisibility"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="@dimen/usernameMargin">
+
+        <TextView
+            android:id="@+id/recognizeResult"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/colorAccent"
+            android:text="Result"
+            android:textSize="20dp"/>
+        <!--
+               <TextView
+                   android:layout_marginTop="10dp"
+                   android:id="@+id/recognizeResultcar"
+                   android:layout_gravity="center"
+                   android:gravity="center"
+                   android:layout_height="wrap_content"
+                   android:layout_width="match_parent"
+                   android:textColor="@color/colorAccent"
+                   android:text=""
+                   android:textSize="20dp"/>
+               -->
+                       <RelativeLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="match_parent">
+
+                           <TextView
+                               android:layout_height="wrap_content"
+                               android:layout_width="match_parent"
+                               android:layout_marginLeft="20dp"
+                               android:textStyle="bold"
+                               android:textColor="@color/colorAccent"
+                               android:layout_marginTop="4dp"
+                               android:text="Make"
+                               android:textSize="14dp" />
+
+                           <TextView
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:layout_marginLeft="0dp"
+                               android:gravity="end"
+                               android:layout_marginRight="20dp"
+                               android:layout_marginTop="4dp"
+                               android:id="@+id/carMake"
+                               android:text="Fetching Results..."
+                               android:textSize="14dp" />
+
+               </RelativeLayout>
+
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <TextView
+                       android:layout_height="wrap_content"
+                       android:layout_width="match_parent"
+                       android:layout_marginLeft="20dp"
+                       android:textStyle="bold"
+                       android:textColor="@color/colorAccent"
+                       android:layout_marginTop="4dp"
+                       android:text="Model"
+                       android:textSize="14dp" />
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="0dp"
+                       android:layout_marginRight="20dp"
+                       android:gravity="end"
+                       android:id="@+id/carModel"
+                       android:layout_marginTop="4dp"
+                       android:text="Fetching Results..."
+                       android:textSize="14dp" />
+
+               </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
