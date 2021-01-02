@@ -12,7 +12,7 @@ The scope of ShiftDrive is very broad since every person interacts with the cars
   5. Get best Repair options around.<br>
   
   <h2><b>Model Details<b></h2>
-  Dataset - Train images 7000 - Test Images 220 
-  # "Imagenet" is used for getting pre trained weights using Transfer Learning 
+  Dataset - Train images 7000 - Test Images 220---- 
+  <b>"Imagenet"</b> is used for getting pre trained weights using Transfer Learning 
   -----
-  "Softmax" Activation Function "Adam" optimizer "Categorical crossentropy" Loss Function.
+  <b>"Softmax" </b> Activation Function -----<b>"Adam"</b> optimizer -----<b>"Categorical crossentropy"</b> Loss Function.
