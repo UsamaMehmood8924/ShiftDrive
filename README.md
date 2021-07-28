@@ -16,3 +16,23 @@ The scope of ShiftDrive is very broad since every person interacts with the cars
   <b>"Imagenet"</b> is used for getting pre trained weights using Transfer Learning 
   -----
   <b>"Softmax" </b> Activation Function -----<b>"Adam"</b> optimizer -----<b>"Categorical crossentropy"</b> Loss Function.
+
+    
+  <h1> <b> Installation </h1>
+    $ git clone https://github.com/ultralytics/yolov5
+        $ cd yolov5
+        $ pip install -r requirements.txt
+
+  <h1> <b> Inference </h1>
+       ''' $ python detect.py --source 0  # webcam
+                            file.jpg  # image 
+                            file.mp4  # video
+                            path/  # directory
+                            path/*.jpg  # glob
+                            'https://youtu.be/NUsoVlDFqZg'  # YouTube video
+                            'rtsp://example.com/media.mp4'  # RTSP, RTMP, HTTP stream
+'''
+   <h1> <b> Environment (Tools) </h1>
+        ![image](https://user-images.githubusercontent.com/62746852/127302883-6f6b8784-b1ef-454e-ab1c-f20d27bdfdc3.png)
+   
+      
