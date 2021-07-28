@@ -35,6 +35,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="dateText" parent="parent">
+        <item name="android:textColor">@color/whiteTextColor</item>
+    </style>
+
     <style name="loginCard" parent="parent"></style>
 
     <style name="linearParent" parent="parent">

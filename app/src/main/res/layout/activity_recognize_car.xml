@@ -68,12 +68,18 @@
                 <include
                     layout="@layout/layout_selectimage"/>
 
+                <!--
                 <include
-
                     android:visibility="gone"
                     layout="@layout/layout_recognize_car_results"/>
+                -->
 
-
+                <Button
+                    android:id="@+id/nextBtn"
+                    style="@style/loginButton"
+                    android:text="Proceed Next"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="0dp"/>
 
 
 

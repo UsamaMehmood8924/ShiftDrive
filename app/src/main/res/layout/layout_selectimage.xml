@@ -20,7 +20,7 @@
         <TextView
             style="@style/headerTextPrimary"
             android:text="Select Car Image"
-            android:layout_marginTop="@dimen/loginViewsMargin"/>
+            android:layout_marginTop="0dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,12 +46,79 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
+        <!--
         <Button
             android:id="@+id/recognizeCarbtn"
             style="@style/loginButton"
             android:text="Recognize this Car"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
+        -->
+<!--
+        <include
+            android:visibility="gone"
+            layout="@layout/layout_recognize_car_results"/>
+-->
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/makenmodelresult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:layout_marginTop="4dp"
+                android:text="Make &amp; Model"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:gravity="end"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="4dp"
+                android:id="@+id/carMake"
+                android:text="Fetching Results..."
+                android:textSize="14dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/notSatisfied"
+            android:textSize="13sp"
+            android:layout_marginTop="5dp"
+            android:text="Not satisfied with our match?"/>
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/notSatisfied1"
+            android:textSize="13sp"
+            android:layout_marginTop="0dp"
+            android:text="Please Select a correct one"/>
+
+        <Spinner
+            android:visibility="gone"
+            android:id="@+id/spinner1"
+            android:entries="@array/car_list"
+            android:layout_width="match_parent"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:background="@drawable/login_button_bk"
+            android:spinnerMode="dropdown"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,5 +1,7 @@
 package com.usamamehmood.shiftdrive;
 
+//This is the user class.
+
 public class User {
     String name;
     String phone;

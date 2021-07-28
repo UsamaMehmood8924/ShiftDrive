@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="25dp"
+    android:layout_marginBottom="@dimen/loginViewsMargin"
+    android:background="@color/whiteCardColor">
+
+
+
+    <LinearLayout
+        style="@style/linearParent"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:id="@+id/details_layout_1"
+        android:padding="@dimen/loginViewsMargin2">
+
+        <TextView
+            style="@style/headerTextPrimary"
+            android:text=""
+            android:id="@+id/details_shopname_1"
+            android:layout_marginTop="1dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.01"
+                android:textColor="#00BCD4"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="Name: "/>
+
+            <TextView
+                style="@style/parent"
+                android:layout_marginLeft="33dp"
+                android:layout_marginRight="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/details_name_1"
+                android:layout_weight="1.9"
+                android:text=""/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:weightSum="2"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.01"
+                android:textColor="#00BCD4"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="Location: "/>
+
+            <TextView
+                style="@style/parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="0dp"
+                android:layout_width="wrap_content"
+                android:id="@+id/details_location_1"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_weight="1.9"
+                android:text=""/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.01"
+                android:textColor="#00BCD4"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:text="Contact#:"/>
+
+            <TextView
+                style="@style/parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/details_contact_1"
+                android:layout_weight="1.9"
+                android:text=""/>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/tracklocation_1"
+            style="@style/loginButton"
+            android:text="Locate Shop"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

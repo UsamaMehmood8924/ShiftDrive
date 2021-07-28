@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -18,12 +19,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+//This is the Dashboard of User side Application
+
 public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
     LinearLayout btnRecognize;
     LinearLayout btnDetectDamage;
+    LinearLayout btnShowResponse;
+    TextView _homeusername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,10 @@ public class HomeActivity extends AppCompatActivity {
 
         btnRecognize = findViewById(R.id.recognizeCar);
         btnDetectDamage = findViewById(R.id.detectDamageCar);
+        btnShowResponse = findViewById(R.id.layoutviewbidresponse);
+        _homeusername = findViewById(R.id.homeusername);
+
+        _homeusername.setText("Welcome "+ UserCredentials.getName() );
 
         btnRecognize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,10 +66,21 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //This function displays the Login as activity UI
         btnDetectDamage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(HomeActivity.this,DetectCarDamage.class);
+                Intent i = new Intent(HomeActivity.this,LoginAs.class);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        //This function display the Bid response activity UI
+        btnShowResponse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeActivity.this,ShowBidResponse.class);
                 startActivity(i);
             }
         });

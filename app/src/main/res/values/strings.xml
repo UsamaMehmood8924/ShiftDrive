@@ -18,5 +18,13 @@
     <string name="signup_login_hint">Already have an account? <u>Sign In</u></string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
 
+    <string-array name="car_list">
+        <item>Select make &amp; model</item>
+        <item>Honda Civic</item>
+        <item>Toyota Corolla</item>
+        <item>Honda City</item>
+        <item>Suzuki Wagon R</item>
+        <item>Suzuki Mehran</item>
+    </string-array>
 
 </resources>

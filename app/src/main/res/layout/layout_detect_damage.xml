@@ -32,14 +32,14 @@
                 android:layout_width="wrap_content"
                 android:layout_marginTop="2dp"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_detectdamage" />
+                app:srcCompat="@drawable/ic_logout_user" />
 
             <TextView
                 style="@style/headerTextPrimary"
                 android:layout_marginLeft="20dp"
                 android:textSize="14dp"
                 android:layout_marginTop="4dp"
-                android:text="Detect Damage" />
+                android:text="Logout" />
         </RelativeLayout>
 
     </LinearLayout>

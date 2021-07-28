@@ -2,14 +2,38 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.usamamehmood.shiftdrive">
 
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
+        android:name=".Notifications"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".BidRequestActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".View_Booking_Request"></activity>
+        <activity android:name=".VendorSideBookingDetailsDisplay" />
+        <activity android:name=".UsersideVenderBookingActivity" />
+        <activity android:name=".VendorDetailsScreen" />
+        <activity android:name=".DisplayRequestedBidResponse" />
+        <activity android:name=".ShowBidResponse" />
+        <activity android:name=".DisplayRequestedBid" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Vendor_BidDetails" />
+        <activity android:name=".View_Bid_Requests" />
+        <activity android:name=".Vendor_Dashboard" />
+        <activity android:name=".Vendor_Login" />
+        <activity android:name=".Vendor_Signup" />
+        <activity android:name=".BidRequestActivity" />
         <activity android:name=".DetectCarDamage" />
         <activity android:name=".RecognizeCarActivity" />
         <activity android:name=".RegisterActivity" />
@@ -17,7 +41,7 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginAs">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,13 +49,5 @@
             </intent-filter>
         </activity>
     </application>
-
-    <uses-feature android:name="android.hardware.camera.autofocus" />
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>

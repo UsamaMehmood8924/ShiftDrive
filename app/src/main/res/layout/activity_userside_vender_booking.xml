@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    style="@style/loginParent"
+    tools:context=".Vendor_Dashboard">
+
+    <ScrollView
+        style="@style/parent">
+
+        <RelativeLayout
+            style="@style/parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:weightSum="12">
+
+                <LinearLayout
+                    style="@style/parent"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical"
+                    android:layout_weight="3">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="login background" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:text="Shift Drive"
+                    android:textSize="40dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:text="Vendor Booking"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:layout_marginTop="120dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp">
+
+                <include layout="@layout/layout_vendor_details_screen_1" />
+
+                <Button
+                    android:id="@+id/selectBookingDate_1"
+                    style="@style/loginButton"
+                    android:text="Select Date"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2"
+                    android:visibility="invisible"
+                    android:id="@+id/showbookingtime"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.01"
+                        android:textColor="#00BCD4"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:text="Booking Time: "/>
+
+                    <TextView
+                        style="@style/parent"
+                        android:layout_marginLeft="33dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:id="@+id/selectedBookingTime"
+                        android:layout_weight="1.9"
+                        android:text=""/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/finalBookingButton"
+                    style="@style/loginButton"
+                    android:text="Book"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="70dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

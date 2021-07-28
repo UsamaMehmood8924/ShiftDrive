@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -46,22 +47,21 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+//This class functionally detects the damage of car
+
 public class DetectCarDamage extends AppCompatActivity {
 
-
-    ImageView imgDisplayHere;
+    ImageView imgDisplayHere; // This view displays the selected image
     Button btnImgUpload, btnImgSelect;
     Uri uplaodImageUri;
     Button _btnGetVendorCost;
+    String enco_string;
 
     TextView _damageResultReport;
     private static final int CAMERA_REQUEST = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
-    Handler handler;
-
-
-    CardView resultCardView;
+    Handler handler; //This handler connects the socket execution thread with main UI thread.
 
     ProgressDialog pd;
 
@@ -70,22 +70,39 @@ public class DetectCarDamage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detect_car_damage);
 
-        pd = new ProgressDialog(DetectCarDamage.this);
-
+        _damageResultReport = findViewById(R.id.damageresultreport);
+        //btnImgUpload = findViewById(R.id.DetectDamageCarbtn);
+        btnImgSelect = findViewById(R.id.selectDamageImageBtn);
+        imgDisplayHere = findViewById(R.id.selectDamageCar);
+        //resultCardView = findViewById(R.id.cardviewDamageResult); //update this
         _btnGetVendorCost = findViewById(R.id.getVenderBid);
+        pd = new ProgressDialog(DetectCarDamage.this);
+        handler=new Handler();
+
+        if(CarImage.getImg()!=null)
+        {
+            uplaodImageUri = CarImage.getImg();
+            CarDetails.setDamagedCarImg(uplaodImageUri);
+            imgDisplayHere.setImageURI(CarImage.getImg());
+            DetectDamageOnCar();
+        }
+
+
         _btnGetVendorCost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(DetectCarDamage.this,BidRequestActivity.class);
-                startActivity(i);
+                if(uplaodImageUri!=null) {
+
+                    Intent i = new Intent(DetectCarDamage.this, BidRequestActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    Toast.makeText(DetectCarDamage.this,"Please Select an Image First",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
-        _damageResultReport = findViewById(R.id.damageresultreport);
-        btnImgUpload = findViewById(R.id.DetectDamageCarbtn);
-        btnImgSelect = findViewById(R.id.selectDamageImageBtn);
-        imgDisplayHere = findViewById(R.id.selectDamageCar);
-        resultCardView = findViewById(R.id.cardviewDamageResult); //update this
+
         btnImgSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,59 +112,32 @@ public class DetectCarDamage extends AppCompatActivity {
             }
         });
 
-        handler=new Handler();
-
-        btnImgUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(uplaodImageUri!=null)
-                {
-                    pd.setMessage("Detecting...");
-                    pd.show();
-
-                    try {
-                        final InputStream imageStream = getContentResolver().openInputStream(uplaodImageUri);
-                        final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                        //imgDisplayHere.setImageBitmap(selectedImage);
-
-                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                        selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                        byte[] array = byteArrayOutputStream.toByteArray();
-
-                        sendImage(array);
-
-                        //SendImageClient sendImageClient = new SendImageClient();
-                        //sendImageClient.execute(array);
+    }
 
 
+    private void DetectDamageOnCar()
+    {
+        if(uplaodImageUri!=null)
+        {
+            CarDetails.setDamagedCarImg(uplaodImageUri);
+            pd.setMessage("Detecting...");
+            pd.show();
 
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+            try {
+                final InputStream imageStream = getContentResolver().openInputStream(uplaodImageUri);
+                final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                //imgDisplayHere.setImageBitmap(selectedImage);
 
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                selectedImage.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                byte[] array = byteArrayOutputStream.toByteArray();
 
-                    /*
-                    JSONObject object=new JSONObject();
-                    try {
-                        //Yahn pr ap ne image ko string ma convert kr k add kr dena hai.
-                        imgDisplayHere.setImageURI(uplaodImageUri);
+                sendImage(array);
 
-                        object.put("Sentence",getByteArray(uplaodImageUri));
-                        sendMsg(object.toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    */
-                }
-                else
-                {
-                    Toast.makeText(DetectCarDamage.this,"Please select Car Image",Toast.LENGTH_SHORT).show();
-                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
-        });
-
-
+        }
     }
 
     public class SendImageClient extends AsyncTask<byte[], Void, Void> {
@@ -157,7 +147,7 @@ public class DetectCarDamage extends AppCompatActivity {
         protected Void doInBackground(byte[]... voids) {
 
             try {
-                Socket socket= new Socket("192.168.0.58",5003);
+                Socket socket= new Socket("192.168.10.2",5008);
 
                 OutputStream out=socket.getOutputStream();
                 DataOutputStream dataOutputStream=new DataOutputStream(out);
@@ -185,15 +175,6 @@ public class DetectCarDamage extends AppCompatActivity {
                     }
                 });
 
-
-                /*handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(ImageActivity.this, "Image sent", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                */
-
                 dataOutputStream.close();
                 out.close();
                 //socket.close();
@@ -207,22 +188,20 @@ public class DetectCarDamage extends AppCompatActivity {
         }
     }
 
-
     private void sendImage(final byte[] array) {
-        resultCardView.setVisibility(View.VISIBLE);
+        _damageResultReport.setVisibility(View.VISIBLE);
         _damageResultReport.setText("Detecting...");
         Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
 
-                    Socket socket= new Socket("192.168.0.58",5008);
+                    Socket socket= new Socket("192.168.10.2",5008);
                     OutputStream out=socket.getOutputStream();
                     DataOutputStream dataOutputStream=new DataOutputStream(out);
                     dataOutputStream.write(array);
                     dataOutputStream.close();
                     out.close();
-
                     socket.close();
                     System.out.println("Sent");
 
@@ -235,7 +214,7 @@ public class DetectCarDamage extends AppCompatActivity {
                     System.out.println("Request accepted");
                     DataInputStream dataInputStream  = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
                     final String response = dataInputStream.readLine();
-                    System.out.println("Usama "+response);
+                    System.out.println("Usama147 "+response);
                     clientSocket.close();
                     dataInputStream.close();
                     serverSocket.close();
@@ -243,10 +222,16 @@ public class DetectCarDamage extends AppCompatActivity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            if(response.trim().length()!=0)
+                            if(response.length()!=0)
                             {
                                 pd.dismiss();
-                                _damageResultReport.setText("Damaged part: "+response );
+                                enco_string = response;
+                                String encodedImage = enco_string;
+                                byte[] decodedString = Base64.decode(encodedImage, Base64.DEFAULT);
+                                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                                imgDisplayHere.setImageBitmap(decodedByte);
+                                _damageResultReport.setText("Damaged part: Bumper");
+                                _damageResultReport.setVisibility(View.INVISIBLE);
 
                                 //_Result_.setText("Result");
                                 //_Result_Car_.setText(response);
@@ -258,39 +243,9 @@ public class DetectCarDamage extends AppCompatActivity {
                         }
                     });
 
-//                    BufferedReader data=new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                    final String st=data.readLine();
-//                    System.out.println(st);
-//                    handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            if(st.trim().length()!=0)
-//                            {
-//                                try {
-//                                    JSONObject recData=new JSONObject(st);
-//                                    String lbl=recData.getString("label");
-//
-//                                    Toast.makeText(ImageActivity.this,lbl,Toast.LENGTH_LONG).show();
-//                                    Log.d("Jres",lbl);
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                            else
-//                            {
-//                                Toast.makeText(ImageActivity.this,"no response",Toast.LENGTH_LONG).show();
-//                            }
-//                        }
-//                    });
-//
-//                    dataOutputStream.close();
-//                    out.close();
-//                    socket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                     pd.dismiss();
-                    System.out.println("Sajid" + e.getMessage());
                 }
             }
         });
@@ -365,7 +320,9 @@ public class DetectCarDamage extends AppCompatActivity {
                 Uri selectedImage = data.getData();
                 imgDisplayHere.setImageURI(selectedImage);
                 uplaodImageUri = selectedImage;
-                resultCardView.setVisibility(View.INVISIBLE);
+                //resultCardView.setVisibility(View.INVISIBLE);
+                _damageResultReport.setVisibility(View.INVISIBLE);
+                DetectDamageOnCar();
                 //_Result_.setText("");
                 //_Result_Car_.setText("");
             }
@@ -374,7 +331,9 @@ public class DetectCarDamage extends AppCompatActivity {
                 Bitmap photo = (Bitmap) data.getExtras().get("data");
                 uplaodImageUri = getImageUri(DetectCarDamage.this,photo);
                 imgDisplayHere.setImageBitmap(photo);
-                resultCardView.setVisibility(View.INVISIBLE);
+                //resultCardView.setVisibility(View.INVISIBLE);
+                _damageResultReport.setVisibility(View.INVISIBLE);
+                DetectDamageOnCar();
                 //_Result_.setText("");
                 //_Result_Car_.setText("");
             }

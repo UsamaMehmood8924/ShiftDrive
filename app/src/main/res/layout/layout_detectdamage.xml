@@ -19,8 +19,8 @@
 
         <TextView
             style="@style/headerTextPrimary"
-            android:text="Select Car Image"
-            android:layout_marginTop="10dp"/>
+            android:text="Select Image"
+            android:layout_marginTop="2dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +38,6 @@
 
         </LinearLayout>
 
-
         <Button
             android:id="@+id/selectDamageImageBtn"
             style="@style/loginButton"
@@ -46,12 +45,27 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"/>
 
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/damageresultreport"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="3dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/primaryTextColor"
+            android:text="Detecting..."
+            android:textSize="16dp"/>
+
+<!--
         <Button
             android:id="@+id/DetectDamageCarbtn"
             style="@style/loginButton"
             android:text="Detect Damage"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"/>
+-->
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

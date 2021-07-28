@@ -17,6 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,6 +29,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+// This is the Register Activity class that sign up a new user.
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -49,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //Taking the user details from UI elements
         _regName = findViewById(R.id.regName);
         _regPhone = findViewById(R.id.regPhone);
         _regEmail = findViewById(R.id.regEmail);
@@ -71,9 +85,136 @@ public class RegisterActivity extends AppCompatActivity {
         _RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptRegistration();
+                //attemptRegistration();
+                registerUser();
             }
         });
+    }
+
+
+    private void registerUser()
+    {
+        _regEmail.setError(null);
+        _regPassword.setError(null);
+
+        u_email = _regEmail.getText().toString();
+        u_password = _regPassword.getText().toString();
+        u_name = _regName.getText().toString();
+        u_phone = _regPhone.getText().toString();
+
+
+        boolean cancel = false;
+        View focusView = null;
+
+        // Check for a valid password, if the user entered one.
+        if (TextUtils.isEmpty(u_password)) {
+            _regPassword.setError("This field is required");
+            focusView = _regPassword;
+            cancel = true;
+        }
+        if (u_password.length() < 7) {
+            _regPassword.setError("Password too short");
+            focusView = _regPassword;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(u_name)) {
+            _regName.setError("This Field is required");
+            focusView = _regName;
+            cancel = true;
+        }
+        if (TextUtils.isEmpty(u_phone)) {
+            _regPhone.setError("This Field is required");
+            focusView = _regPhone;
+            cancel = true;
+        }
+        if (u_phone.length() < 10 || u_phone.length() > 11) {
+            _regPhone.setError("Please Enter 11 digit phone number");
+            focusView = _regPhone;
+            cancel = true;
+        }
+
+        // Check for a valid email address.
+        if (TextUtils.isEmpty(u_email)) {
+            _regEmail.setError("This Field is required");
+            focusView = _regEmail;
+            cancel = true;
+        } else if (!isEmailValid(u_email)) {
+            _regEmail.setError("This email address is invalid");
+            focusView = _regEmail;
+            cancel = true;
+        }
+
+        if (cancel) {
+            // There was an error; don't attempt login and focus the first
+            // form field with an error.
+            focusView.requestFocus();
+        } else {
+
+            ProgressDialog pd = new ProgressDialog(RegisterActivity.this);
+            pd.setMessage("Registering...");
+            pd.show();
+
+            //Create a Volley Request
+            String url = "http://codingwithsunny.com/Shiftdrive/registerUser.php";
+            StringRequest MyStringRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject res=new JSONObject(response);
+                                Log.d("Sohaib","I'm in5");
+                                //Toast.makeText(MainActivity.this,res.getString("password"),Toast.LENGTH_LONG).show();
+                                //_pass.setText(res.getString("password"));
+                                if(res.getString("status").equalsIgnoreCase("1"))
+                                {
+                                    pd.dismiss();
+
+                                    //Setting User Credentials for further usage
+                                    UserCredentials.setId(res.getString("id"));
+                                    UserCredentials.setName(u_name.trim());
+                                    UserCredentials.setEmail(u_email);
+                                    UserCredentials.setPassword(u_password);
+                                    UserCredentials.setPhone(u_phone);
+                                    //Perform Intent
+                                    Intent i = new Intent(RegisterActivity.this,HomeActivity.class);
+                                    finish();
+                                    startActivity(i);
+                                }
+                                else
+                                {
+                                    showErrorDialog("Registration attempt failed");
+                                    pd.dismiss();
+                                    Toast.makeText(RegisterActivity.this,res.getString("status"),Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //Toast.makeText(MainActivity.this,response.toString(),Toast.LENGTH_LONG).show();
+                        }
+                    },
+                    new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("Sohaib",error.toString());
+                            showErrorDialog("Registration attempt failed");
+                            pd.dismiss();
+//This code is executed if there is an error.
+                        }
+                    }) {
+                protected Map<String, String> getParams() {
+                    Map<String, String> data = new HashMap<String, String>();
+                    data.put("email", u_email);
+                    data.put("password", u_password);
+                    data.put("name", u_name);
+                    data.put("phone", u_phone);
+                    Log.d("Sohaib","I'm in2");
+                    return data;
+                }
+            };
+            Volley.newRequestQueue(RegisterActivity.this).add(MyStringRequest);
+
+        }
     }
 
     private void attemptRegistration() {

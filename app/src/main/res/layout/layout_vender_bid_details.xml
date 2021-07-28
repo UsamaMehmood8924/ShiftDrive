@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/loginCard"
+    app:cardCornerRadius="@dimen/loginCardRadius"
+    android:elevation="5dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="@dimen/loginViewsMargin"
+    android:layout_marginBottom="@dimen/loginViewsMargin"
+    android:background="@color/whiteCardColor">
+
+
+
+    <LinearLayout
+        style="@style/linearParent"
+        android:layout_gravity="center"
+        android:padding="@dimen/loginViewsMargin2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_margin="5dp"
+                android:id="@+id/selectDamageCar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_selectimage"
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/headerTextPrimary"
+            android:text="Make: Honda"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            style="@style/headerTextPrimary"
+            android:text="Model: City(2017)"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            style="@style/headerTextPrimary"
+            android:text="Damaged Area: Bumper"
+            android:layout_marginTop="5dp"/>
+        <TextView
+            style="@style/headerTextPrimary"
+            android:text="Note From Client: Need to replace it"
+            android:layout_marginTop="5dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bidPrice_"
+                style="@style/modifiedEditText"
+                android:hint="Please enter bid for this repair"
+                android:maxLines="1"
+                android:inputType="textLongMessage"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/notefromvendor_"
+                style="@style/modifiedEditText"
+                android:hint="Note for client"
+                android:maxLines="1"
+                android:inputType="textLongMessage"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/selectDamageImageBtn"
+            style="@style/loginButton"
+            android:text="Send Response"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -85,6 +85,10 @@
                 <include
                     layout="@layout/layout_recognize_car"/>
 
+
+                <include
+                    layout="@layout/layout_view_bid_response"/>
+
                 <include
                     layout="@layout/layout_detect_damage"/>
 

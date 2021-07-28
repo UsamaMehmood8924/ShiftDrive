@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="#D6F3F6"
+    tools:context=".LoginAs">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_marginTop="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sd_icon_new"
+            />
+
+        <TextView
+            style="@style/headerTextPrimary"
+            android:text="Select Your Role"
+            android:textSize="28sp"
+            android:layout_marginTop="60dp"/>
+
+        <android.widget.Button
+            android:id="@+id/loginasowner"
+            style="@style/loginButton"
+            android:text="Car Owner"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+        <android.widget.Button
+            android:id="@+id/loginasvendor"
+            style="@style/loginButton"
+            android:text="Mechanic / Vendor"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/loginViewsMargin"/>
+
+    </LinearLayout>
+
+</LinearLayout>

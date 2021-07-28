@@ -31,6 +31,7 @@
             <ImageView
                 android:layout_margin="5dp"
                 android:id="@+id/ImageCarBid"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:src="@drawable/ic_selectimage"
@@ -43,44 +44,44 @@
             style="@style/parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="@dimen/loginViewsMargin">
+            android:layout_marginTop="15dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bidmodel_"
                 style="@style/modifiedEditText"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:maxLines="1"
-                android:hint="Model"/>
+                android:hint="Make &amp; Model"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/parent"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp">
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bidmake_"
-                style="@style/modifiedEditText"
-                android:hint="Make"
-                android:maxLines="1"
-                android:inputType="textPassword"/>
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/parent"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="5dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/damagedArea_"
                 style="@style/modifiedEditText"
                 android:hint="Damage"
                 android:maxLines="1"
-                android:inputType="textPassword"/>
+                android:inputType="text"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/noteforvendor_"
+                style="@style/modifiedEditText"
+                android:hint="Note for Vendor"
+                android:maxLines="1"
+                android:inputType="textLongMessage"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/sendBidRequest"
             style="@style/loginButton"
-            android:text="Request Repair Bid"
+            android:text="Request Bid"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"/>
 
